@@ -1,5 +1,6 @@
 <head>
-  <title>overunder</title>
+  <title>Over Under</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -7,12 +8,17 @@
 </body>
 
 <template name="page">
+	{{#if showCreateDialog}}
+    {{> createDialog}}
+  {{/if}}
 	<div class="container">
 		<div class="row">
 			<div class="header row">
+				
 				<div class="span8">
 					<h1>Over Under</h1>
 				</div>
+				
 				<div class="span4">
 					<div class="pull-right">
 						{{loginButtons align="right"}}
@@ -20,12 +26,17 @@
 				</div>
 			</div>
 	  	<div class="content row">
+	  		{{#if currentUser}}
+	  		<div class="span12">
+					<button class="btn add"><i class="icon-plus"></i> Add Question</button>
+	  		</div>
+	  		{{/if}}
 				{{#each questions}}
 					<div class="span4">
 						<h3>{{text}}</h3>
 						<p>
-							<button class="btn btn-primary">Over</button>
-							<button class="btn btn-warning">Under</button>
+							<button class="btn btn-danger answer_over">Over {{getNumberOfOvers}}</button>
+							<button class="btn btn-primary answer_under">Under {{getNumberOfUnders}}</button>
 						</p>
 						<p>{{expires}}</p>
 					</div>
@@ -34,4 +45,32 @@
 	  	{{greeting}}
 	  </div>
 	</div>
+</template>
+
+<template name="createDialog">
+  <div class="mask"> </div>
+  <div class="modal">
+    <div class="modal-header">
+      <button type="button" class="close cancel">&times;</button>
+      <h3>Add question</h3>
+    </div>
+
+    <div class="modal-body">
+      {{#if error}}
+        <div class="alert alert-error">{{error}}</div>
+      {{/if}}
+
+      <label>Over/Under: </label>
+      <input type="text" class="text span5">
+
+      <label>Expires</label>
+      <input type="text" class="expires span5">
+
+    </div>
+
+    <div class="modal-footer">
+      <a href="#" class="btn cancel">Cancel</a>
+      <a href="#" class="btn btn-primary save">Add question</a>
+    </div>
+  </div>
 </template>
