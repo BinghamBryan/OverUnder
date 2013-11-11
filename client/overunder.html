@@ -6,8 +6,167 @@
 <body>
   {{> page}}
 </body>
-
 <template name="page">
+	
+	<div class="outerPageWrap">
+
+    <div class="outerHeaderWrap">
+
+        <header>
+
+            <h1><a href="#">Over Unders</a></h1>
+
+            <nav>
+
+                <ul>
+
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Created</a></li>
+                    <li><a href="#">Watching</a></li>
+                    <li><a href="#">Popular</a></li>
+
+                </ul>
+
+            </nav>
+
+            <a href="#" class="settingsBtn">{{loginButtons align="right"}}</a>
+            <a href="#" class="settingsBtn">Settings</a>
+
+        </header>
+
+    </div>
+
+    <fdiv class="lowerOuterPageWrap">
+
+        <div class="lowerPageWrap">
+
+            <aside class="sideBar">
+								{{#if currentUser}}
+	                <div class="profileWrap">
+
+	                    <div class="profileImageWrap"><img width="80" src="/images/avatar.jpg" /></div>
+
+	                    <div class="profileNamesWrap">
+
+	                        <h2>{{currentUser.username}}</h2>
+
+	                        <h3>{{currentUser.profile.name}}</h3>
+
+	                    </div>
+											{{> addOverUnder}}
+	                    
+
+	                </div>
+                {{/if}}
+                <div class="statisticsWrap">
+									<h2>Tags</h2>
+									{{#each tags}}
+										<h3>{{this}}</h3>
+									{{/each}}
+                </div>
+								<!--
+                <div class="statisticsWrap">
+
+                    <h2>My Record</h2>
+
+                    <h3><strong>Overall</strong> <span>53 - 42</span></h3>
+
+                    <h3><strong>Today</strong> <span>53 - 42</span></h3>
+
+                    <h3><strong>This Week</strong> <span>53 - 42</span></h3>
+
+                    <h3><strong>This Month</strong> <span>53 - 42</span></h3>
+
+                </div>
+
+                <div class="statisticsWrap">
+
+                    <h2>My Tags</h2>
+
+                    <h3><strong><a href="#">#CHIvSEA</a></strong> <span>53 - 42</span></h3>
+
+                    <h3><strong><a href="#">#WorldCup</a></strong> <span>53 - 42</span></h3>
+
+                    <h3><strong><a href="#">#NBA</a></strong> <span>53 - 42</span></h3>
+
+                    <h3><strong><a href="#">#BiggestLoser</a></strong> <span>53 - 42</span></h3>
+
+                </div>
+              -->
+
+            </aside>
+
+            <div class="contentPageWrap">
+
+                <div class="upperHeaderWrap">
+
+                    <h1>Category Name</h1>
+
+                    <div class="topSearchWrap">
+
+                        <form>
+
+                            <input type="text" value="Search" />
+
+                            <input type="submit" value="Go" />
+
+                        </form>
+
+                    </div>
+
+                </div>
+								{{#each questions}}
+									
+	                <div class="overunderItemOuterWrap">
+
+	                    <h2><strong>{{text}}</strong> <span>Ending {{expires}}</span></h2>
+
+	                    <div class="overunderAllThingsWrap">
+
+	                        <div class="overunderBtnsWrap">
+
+	                            <h3>{{number}}</h3>
+
+	                            <button class="overBtn selectedBtn">Over</button>
+
+	                            <button class="underBtn unselectedBtn">Under</button>
+
+	                        </div>
+
+	                        <div class="overunderGraphWrap">
+
+	                            <div class="overUnderBarsTextWrap">
+
+	                                <h4 class="overBarText">{{getNumberOfOvers}}</h4>
+
+	                                <h4 class="underBarText">{{getNumberOfUnders}}</h4>
+
+	                            </div>
+
+	                            <div class="overUnderBars">
+
+	                                <div class="overBar" style="width: {{getPercentOvers}}%;"></div>
+
+	                                <div class="underBar" style="width: {{getPercentUnders}}%;"></div>
+
+	                            </div>
+
+	                        </div>  
+
+	                    </div>
+
+	                </div>
+								{{/each}}
+
+            </div>
+
+        </div>
+
+    </div>
+
+  </div>
+</template>
+<template name="oldpage">
 	{{#if showCreateDialog}}
     {{> createDialog}}
   {{/if}}
@@ -42,35 +201,32 @@
 					</div>
 				{{/each}}
 	  	</div>
-	  	{{greeting}}
 	  </div>
 	</div>
 </template>
 
-<template name="createDialog">
-  <div class="mask"> </div>
-  <div class="modal">
-    <div class="modal-header">
-      <button type="button" class="close cancel">&times;</button>
-      <h3>Add question</h3>
-    </div>
+<template name="addOverUnder">
+	<div class="addOverUnderWrap">
 
-    <div class="modal-body">
-      {{#if error}}
-        <div class="alert alert-error">{{error}}</div>
-      {{/if}}
+    <h2>Add An Over Under</h2>
 
-      <label>Over/Under: </label>
-      <input type="text" class="text span5">
+    <form>
 
-      <label>Expires</label>
-      <input type="text" class="expires span5">
+        <div class="addOverLeftWrap">
 
-    </div>
+            <input class="addNumber number" type="text" placeholder="Num" />
 
-    <div class="modal-footer">
-      <a href="#" class="btn cancel">Cancel</a>
-      <a href="#" class="btn btn-primary save">Add question</a>
-    </div>
-  </div>
+            <div class="calendarIcon">Expiration Date</div>
+
+        </div>
+        
+        <div class="addStatement text" contenteditable>Over Under</div>
+
+        <input class="addOverUnderBtn save" type="button" value="Do it!" />    
+
+    </form>
+		{{#if error}}
+      <div class="alert alert-error">{{error}}</div>
+    {{/if}}
+	</div>
 </template>

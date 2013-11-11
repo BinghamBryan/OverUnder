@@ -10,6 +10,16 @@ Template.page.questions = function(){
   return Questions.find();
 }
 
+Template.page.tags = function(){
+  var allTags = [];
+  Questions.find().forEach(function(q){
+    if (q.tags){
+      allTags = allTags.concat(q.tags);
+    }
+  });
+  return allTags;
+}
+
 Template.page.getNumberOfUnders = function(){
 	return numberOfUnders(this);
 }
@@ -18,12 +28,22 @@ Template.page.getNumberOfOvers = function(){
 	return numberOfOvers(this);
 }
 
+Template.page.getPercentUnders = function(){
+  return percentUnders(this);
+}
+
+Template.page.getPercentOvers = function(){
+  return percentOvers(this);
+}
+
 Template.page.events({
-  'click .answer_over': function () {
+  'click .overBtn': function (e) {
+    e.preventDefault();
     Meteor.call("answer", this._id, "over");
     return false;
   },
-  'click .answer_under': function () {
+  'click .underBtn': function (e) {
+    e.preventDefault();
     Meteor.call("answer", this._id, "under");
     return false;
   },
@@ -38,40 +58,38 @@ Template.page.events({
 });
 
 ///////////////////////////////////////////////////////////////////////////////
-// Create Party dialog
+// Create Over Under dialog
 
-var openCreateDialog = function () {
-  Session.set("createError", null);
-  Session.set("showCreateDialog", true);
+Template.addOverUnder.rendered = function(){
+  $('.expires').datepicker();
+  $('.addStatement').on('activate', function(){
+    $(this).empty();
+  })
 };
 
-Template.page.showCreateDialog = function () {
-  return Session.get("showCreateDialog");
-};
-
-Template.createDialog.events({
+Template.addOverUnder.events({
   'click .save': function (event, template) {
-    var text = template.find(".text").value;
-    var expires = template.find(".expires").value;
+    var number = template.find(".number").value;
+    var text = template.find(".text").innerText;
+    //var expires = template.find(".expires").value;
+    var expires = '24 hours';
+    var tagslistarr = text.match(/#\S+/g);
 
-    if (text.length && expires.length) {
+    if (text.length && expires.length && number.length) {
       var id = createQuestion({
+        number: number,
         text: text,
-        expires: expires
+        expires: expires,
+        tags: tagslistarr
       });
-
-      Session.set("showCreateDialog", false);
     } 
     else {
-      Session.set("createError", "It needs a title and a description, or why bother?");
+      Session.set("createError", "It needs a number, text, and an expiration date, or why bother?");
     }
-  },
-
-  'click .cancel': function () {
-    Session.set("showCreateDialog", false);
+    return false;
   }
 });
 
-Template.createDialog.error = function () {
+Template.addOverUnder.error = function () {
   return Session.get("createError");
 };

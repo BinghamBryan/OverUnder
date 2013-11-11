@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        
+        <div class="outerPageWrap">
+
+            <div class="outerHeaderWrap">
+
+                <header>
+
+                    <h1><a href="#">Over Unders</a></h1>
+
+                    <nav>
+
+                        <ul>
+
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Created</a></li>
+                            <li><a href="#">Watching</a></li>
+                            <li><a href="#">Popular</a></li>
+
+                        </ul>
+
+                    </nav>
+
+                    <a href="#" class="settingsBtn">Logout</a>
+                    <a href="#" class="settingsBtn">Settings</a>
+
+                </header>
+
+            </div>
+
+            <div class="lowerOuterPageWrap">
+
+                <div class="lowerPageWrap">
+
+                    <aside class="sideBar">
+
+                        <div class="profileWrap">
+
+                            <div class="profileImageWrap"><img width="80" src="img/avatar.jpg" /></div>
+
+                            <div class="profileNamesWrap">
+
+                                <h2>RyantheLou</h2>
+
+                                <h3>Ryan Lewis</h3>
+
+                            </div>
+
+                            <div class="addOverUnderWrap">
+
+                                <h2>Add An Over Under</h2>
+
+                                <form>
+
+                                    <div class="addOverLeftWrap">
+
+                                        <input class="addNumber" type="text" value="Num" />
+
+                                        <div class="calendarIcon">Expiration Date</div>
+
+                                    </div>
+                                    
+                                    <div class="addStatement" contenteditable>Over Under</div>
+
+                                    <input class="addOverUnderBtn" type="submit" value="Do it!" />    
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                        <div class="statisticsWrap">
+
+                            <h2>My Record</h2>
+
+                            <h3><strong>Overall</strong> <span>53 - 42</span></h3>
+
+                            <h3><strong>Today</strong> <span>53 - 42</span></h3>
+
+                            <h3><strong>This Week</strong> <span>53 - 42</span></h3>
+
+                            <h3><strong>This Month</strong> <span>53 - 42</span></h3>
+
+                        </div>
+
+                        <div class="statisticsWrap">
+
+                            <h2>My Tags</h2>
+
+                            <h3><strong><a href="#">#CHIvSEA</a></strong> <span>53 - 42</span></h3>
+
+                            <h3><strong><a href="#">#WorldCup</a></strong> <span>53 - 42</span></h3>
+
+                            <h3><strong><a href="#">#NBA</a></strong> <span>53 - 42</span></h3>
+
+                            <h3><strong><a href="#">#BiggestLoser</a></strong> <span>53 - 42</span></h3>
+
+                        </div>
+
+                    </aside>
+
+                    <div class="contentPageWrap">
+
+                        <div class="upperHeaderWrap">
+
+                            <h1>Category Name</h1>
+
+                            <div class="topSearchWrap">
+
+                                <form>
+
+                                    <input type="text" value="Search" />
+
+                                    <input type="submit" value="Go" />
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                        <div class="overunderItemOuterWrap">
+
+                            <h2><strong>Derrick Rose's total points for this game #CHIvLAL</strong> <span>Ending Tues Jan. 9 2013 - 8:30 PM PST</span></h2>
+
+                            <div class="overunderAllThingsWrap">
+
+                                <div class="overunderBtnsWrap">
+
+                                    <h3>999</h3>
+
+                                    <button class="overBtn selectedBtn">Over</button>
+
+                                    <button class="underBtn unselectedBtn">Under</button>
+
+                                </div>
+
+                                <div class="overunderGraphWrap">
+
+                                    <div class="overUnderBarsTextWrap">
+
+                                        <h4 class="overBarText">9999</h4>
+
+                                        <h4 class="underBarText">4</h4>
+
+                                    </div>
+
+                                    <div class="overUnderBars">
+
+                                        <div class="overBar" style="width: 80%;"></div>
+
+                                        <div class="underBar" style="width: 20%;"></div>
+
+                                    </div>
+
+                                </div>  
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="overunderItemOuterWrap" id="finalizedOver">
+
+                            <h2><strong>Derrick Rose's total points for this game #CHIvLAL</strong> <span>OVER</span></h2>
+
+                            <div class="overunderBtnsWrap">
+
+                                <h3>999</h3>
+
+                                <button class="overBtn">Over</button>
+
+                                <button class="underBtn">Under</button>
+
+                            </div>
+
+                            <div class="overunderGraphWrap">
+
+                                <div class="overUnderBarsTextWrap">
+
+                                    <h4 class="overBarText">9999</h4>
+
+                                    <h4 class="underBarText">4</h4>
+
+                                </div>
+
+                                <div class="overUnderBars">
+
+                                    <div class="overBar" style="width: 80%;"></div>
+
+                                    <div class="underBar" style="width: 20%;"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="overunderItemOuterWrap">
+
+                            <h2><strong>Derrick Rose's total points for this game #CHIvLAL</strong> <span>Ending Tues Jan. 9 2013 - 8:30 PM PST</span></h2>
+
+                            <div class="overunderBtnsWrap">
+
+                                <h3>999</h3>
+
+                                <button class="overBtn">Over</button>
+
+                                <button class="underBtn">Under</button>
+
+                            </div>
+
+                            <div class="overunderGraphWrap">
+
+                                <div class="overUnderBarsTextWrap">
+
+                                    <h4 class="overBarText">9999</h4>
+
+                                    <h4 class="underBarText">4</h4>
+
+                                </div>
+
+                                <div class="overUnderBars">
+
+                                    <div class="overBar" style="width: 80%;"></div>
+
+                                    <div class="underBar" style="width: 20%;"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="overunderItemOuterWrap" id="finalizedUnder">
+
+                            <h2><strong>Derrick Rose's total points for this game #CHIvLAL</strong> <span>UNDER</span></h2>
+
+                            <div class="overunderBtnsWrap">
+
+                                <h3>999</h3>
+
+                                <button class="overBtn">Over</button>
+
+                                <button class="underBtn">Under</button>
+
+                            </div>
+
+                            <div class="overunderGraphWrap">
+
+                                <div class="overUnderBarsTextWrap">
+
+                                    <h4 class="overBarText">9999</h4>
+
+                                    <h4 class="underBarText">4</h4>
+
+                                </div>
+
+                                <div class="overUnderBars">
+
+                                    <div class="overBar" style="width: 80%;"></div>
+
+                                    <div class="underBar" style="width: 20%;"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="overunderItemOuterWrap">
+
+                            <h2><strong>Derrick Rose's total points for this game #CHIvLAL</strong> <span>Ending Tues Jan. 9 2013 - 8:30 PM PST</span></h2>
+
+                            <div class="overunderBtnsWrap">
+
+                                <h3>999</h3>
+
+                                <button class="overBtn">Over</button>
+
+                                <button class="underBtn">Under</button>
+
+                            </div>
+
+                            <div class="overunderGraphWrap">
+
+                                <div class="overUnderBarsTextWrap">
+
+                                    <h4 class="overBarText">9999</h4>
+
+                                    <h4 class="underBarText">4</h4>
+
+                                </div>
+
+                                <div class="overUnderBars">
+
+                                    <div class="overBar" style="width: 80%;"></div>
+
+                                    <div class="underBar" style="width: 20%;"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>
