@@ -17,7 +17,9 @@ Template.page.tags = function(){
       allTags = allTags.concat(q.tags);
     }
   });
-  return allTags;
+  var countArr = _.countBy(allTags);
+  var keysSorted = Object.keys(countArr).sort(function(a,b){return countArr[b]-countArr[a]})
+  return keysSorted;
 }
 
 Template.page.getNumberOfUnders = function(){
