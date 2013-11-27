@@ -7,7 +7,12 @@ Template.page.helpers({
 });
 
 Template.page.questions = function(){
-  return Questions.find();
+  var tagFilter = Session.get('tagFilter');
+  var options = {};
+  if (tagFilter){
+    options.tags = '#' + tagFilter;
+  }
+  return Questions.find(options, {sort: {expires: 1}});
 }
 
 Template.page.tags = function(){
@@ -58,8 +63,18 @@ Template.page.events({
     return false;
   },
   'click .add': function () {
-  	openCreateDialog()
+  	openCreateDialog();
   	return false;
+  },
+  'click .tagSearch': function () {
+    var tag = $('#txtTagSearch').val();
+    if (Session.equals('tagFilter', tag)){
+      Session.set('tagFilter', null);
+    }
+    else{
+      Session.set('tagFilter', tag.toLowerCase());
+    }
+    return false;
   }
 });
 
@@ -82,6 +97,11 @@ Template.addOverUnder.events({
 
     if (tagslistarr == null){
       tagslistarr = [];
+    }
+    else{
+      for(var i = 0; i < tagslistarr.length; i++) {
+        tagslistarr[i] = tagslistarr[i].toLowerCase();
+      }
     }
 
     if (text.length && number.length) {

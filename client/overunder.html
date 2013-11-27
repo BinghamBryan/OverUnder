@@ -9,7 +9,7 @@
 <template name="page">
 	
 	<div class="outerPageWrap">
-
+    {{loginButtons}}
     <div class="outerHeaderWrap">
 
         <header>
@@ -29,17 +29,17 @@
 
             </nav>
 
-            <a href="#" class="settingsBtn">{{loginButtons align="right"}}</a>
+            <a href="#" class="settingsBtn">Logout</a>
             <a href="#" class="settingsBtn">Settings</a>
 
         </header>
 
     </div>
 
-    <fdiv class="lowerOuterPageWrap">
+    <div class="lowerOuterPageWrap">
 
         <div class="lowerPageWrap">
-
+            
             <aside class="sideBar">
 								{{#if currentUser}}
 	                <div class="profileWrap">
@@ -203,7 +203,7 @@
             </aside>
 
             <div class="contentPageWrap">
-
+                
                 <div class="upperHeaderWrap">
 
                     <h1>Category Name</h1>
@@ -212,9 +212,9 @@
 
                         <form>
 
-                            <input type="text" value="Search" />
+                            <input type="text" id="txtTagSearch" placeholder="Search" />
 
-                            <input type="submit" value="Go" />
+                            <input type="submit" class="tagSearch" value="Go" />
 
                         </form>
 
