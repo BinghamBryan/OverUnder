@@ -39,40 +39,13 @@ Questions.allow({
   }
 });
 
-numberOfOvers = function (question) {
-  return (_.groupBy(question.answers, 'answer').over || []).length;
-};
-
-numberOfUnders = function (question) {
-  return (_.groupBy(question.answers, 'answer').under || []).length;
-};
-
-percentOvers = function(question){
-  return (numberOfOvers(question) / question.answers.length) * 100;
-};
-
-percentUnders = function(question){
-  return (numberOfUnders(question) / question.answers.length) * 100;
-};
-
-var NonEmptyString = Match.Where(function (x) {
-  check(x, String);
-  return x.length !== 0;
-});
-
-createQuestion = function (options) {
-  var id = Random.id();
-  Meteor.call('createQuestion', _.extend({ _id: id }, options));
-  return id;
-};
-
 Meteor.methods({
   // options should include: title, description, x, y, public
   createQuestion: function (options) {
     check(options, {
       number: NonEmptyString,
       text: NonEmptyString,
-      expires: NonEmptyString,
+      expires: Date,
       tags: [NonEmptyString],
       _id: Match.Optional(NonEmptyString)
     });
@@ -82,14 +55,12 @@ Meteor.methods({
     if (! this.userId)
       throw new Meteor.Error(403, "You must be logged in");
 
-    var id = options._id || Random.id();
-    Questions.insert({
-      _id: id,
+    var id = Questions.insert({
       owner: this.userId,
       number: options.number,
       text: options.text,
       expires: options.expires,
-      created: moment(),
+      created: moment().toDate(),
       correctAnswer: "",
       answers: [],
       tags: options.tags
@@ -135,20 +106,3 @@ Meteor.methods({
     }
   }
 });
-
-///////////////////////////////////////////////////////////////////////////////
-// Users
-
-displayName = function (user) {
-  if (user.profile && user.profile.name)
-    return user.profile.name;
-  return user.emails[0].address;
-};
-
-var contactEmail = function (user) {
-  if (user.emails && user.emails.length)
-    return user.emails[0].address;
-  if (user.services && user.services.facebook && user.services.facebook.email)
-    return user.services.facebook.email;
-  return null;
-};

@@ -38,6 +38,10 @@ Template.page.getPercentOvers = function(){
   return percentOvers(this);
 }
 
+Template.page.getExpirationDate = function(){
+  return moment(this.expires).calendar();
+}
+
 Template.page.events({
   'click .overBtn': function (e) {
     e.preventDefault();
@@ -73,12 +77,15 @@ Template.addOverUnder.events({
   'click .save': function (event, template) {
     var number = template.find(".number").value;
     var text = template.find(".text").innerText;
-    //var expires = template.find(".expires").value;
-    var expires = '24 hours';
+    var expires = moment().add('days', 7).toDate();
     var tagslistarr = text.match(/#\S+/g);
 
-    if (text.length && expires.length && number.length) {
-      var id = createQuestion({
+    if (tagslistarr == null){
+      tagslistarr = [];
+    }
+
+    if (text.length && number.length) {
+      var id = Meteor.call('createQuestion', {
         number: number,
         text: text,
         expires: expires,
