@@ -1,0 +1,30 @@
+<template name="header">
+    <div class="outerHeaderWrap">
+
+        <header>
+
+            <h1><a href="#">Over Unders</a></h1>
+
+            <nav>
+
+                <ul>
+
+                    <li><a href="/">Home</a></li>
+                    <li><a href="javascript:;" id="popularSortButton">Popular</a></li>
+                    <li><a href="javascript:;" id="newestSortButton">Newest</a></li>
+                    <li><a href="#">Watching</a></li>
+                    
+                </ul>
+
+            </nav>
+            {{#if currentUser}}
+                <a href="javascript:;" id="logoutButton" class="settingsBtn">Logout</a>
+            {{else}}
+                <a href="{{pathFor 'login'}}" id="loginButton" class="settingsBtn">Login</a>
+            {{/if}}
+            <a href="#" class="settingsBtn">Settings</a>
+
+        </header>
+
+    </div>
+</template>

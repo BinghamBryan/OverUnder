@@ -8,11 +8,24 @@ Template.page.helpers({
 
 Template.page.questions = function(){
   var tagFilter = Session.get('tagFilter');
+  var sort = Session.get("sort");
   var options = {};
   if (tagFilter){
     options.tags = '#' + tagFilter;
   }
-  return Questions.find(options, {sort: {expires: 1}});
+
+
+  var sortParam = {sort: {numberOfAnswers: -1}}; //popular
+  if (sort){
+    if (sort === "newest"){
+      sortParam = {sort: {expires: 1}}; //newest
+    }
+    else{
+      sortParam = {sort: {numberOfAnswers: -1}}; //popular
+    }
+  }
+  
+  return Questions.find(options, sortParam);
 }
 
 Template.page.tags = function(){
@@ -47,6 +60,18 @@ Template.page.getExpirationDate = function(){
   return moment(this.expires).calendar();
 }
 
+Template.page.removeHash = function(){
+  return this.replace('#', '');
+}
+
+Template.page.getCategoryName = function(){
+  var name = "Most Popular";
+  if (Session.get('tagFilter')){
+    name = Session.get('tagFilter');
+  }
+  return name;
+}
+
 Template.page.events({
   'click .overBtn': function (e) {
     e.preventDefault();
@@ -72,7 +97,7 @@ Template.page.events({
       Session.set('tagFilter', null);
     }
     else{
-      Session.set('tagFilter', tag.toLowerCase());
+      Router.go('tag', {tag: tag.toLowerCase()});
     }
     return false;
   }

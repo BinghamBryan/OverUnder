@@ -1,0 +1,70 @@
+<template name="login">
+    <div class="homeLoginOuterWrap">
+
+        <div class="leftInfoWrap">
+
+            <h1 class="homeLogo">Over Unders</h1>
+
+            <div class="homeHeroWrap">
+
+                <img src="http://placehold.it/200x251">
+
+                <div>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a faucibus magna. Morbi eget auctor nibh, ut tincidunt purus. Mauris ac ullamcorper libero.</p>
+
+                    <ul>
+
+                        <li><span>1</span> <strong>This is a thing that you can do.</strong></li>
+                        <li><span>2</span> <strong>This is a thing that you can do.</strong></li>
+                        <li><span>3</span> <strong>This is a thing that you can do.</strong></li>
+                        <li><span>4</span> <strong>This is a thing that you can do.</strong></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="rightLoginWrap">
+
+            <div class="loginWrap">
+
+                <form id="login-form" action="action">
+
+                    <input id="login-email" type="text" placeholder="Email" />
+
+                    <input id="login-password" type="password" placeholder="Password" />
+
+                    <input id="login-submit" type="submit" value="Sign in" />
+
+                </form>
+
+                <a href="{{pathFor 'resetPassword'}}">Forgot your password?</a>
+                
+            </div>
+
+            <div class="signupWrap">
+
+                <h2>Sign up</h2>
+
+                <form id="account-form" action="action">
+
+                    <input id="account-name" type="text" placeholder="Full name" />
+
+                    <input id="account-email" type="text" placeholder="Email" />
+
+                    <input id="account-password" type="password" placeholder="Password" />
+
+                    <input id="account-submit" type="submit" value="Sign up for Over Unders!" />
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</template>

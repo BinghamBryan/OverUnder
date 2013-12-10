@@ -1,7 +1,7 @@
 {
   "packages": {
     "bootstrap-updated": {},
-    "router": {},
-    "moment": {}
+    "moment": {},
+    "iron-router": {}
   }
 }

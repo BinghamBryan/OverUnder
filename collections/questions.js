@@ -63,6 +63,7 @@ Meteor.methods({
       created: moment().toDate(),
       correctAnswer: "",
       answers: [],
+      numberOfAnswers: 0,
       tags: options.tags
     });
     return id;
@@ -95,14 +96,15 @@ Meteor.methods({
         var modifier = {$set: {}};
         modifier.$set["answers." + answerIndex + ".answer"] = answer;
         Questions.update(questionId, modifier);
+
       }
 
       // Possible improvement: send email to the other people that are
       // coming to the party.
     } else {
       // add new rsvp entry
-      Questions.update(questionId,
-                     {$push: {answers: {user: this.userId, answer: answer}}});
+      Questions.update(questionId, {$push: {answers: {user: this.userId, answer: answer}}});
+      Questions.update(questionId, {$inc: {numberOfAnswers: 1}});
     }
   }
 });

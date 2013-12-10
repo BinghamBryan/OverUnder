@@ -12,3 +12,4 @@ router
 accounts-password
 accounts-ui
 moment
+iron-router
